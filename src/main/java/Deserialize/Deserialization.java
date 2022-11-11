@@ -1,9 +1,7 @@
 package Deserialize;
-import Serial.TestSerial;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
+import Serial.Data;
+
+import java.io.*;
 
 public class Deserialization implements Serializable {
      int age;
@@ -20,10 +18,20 @@ public class Deserialization implements Serializable {
         this.salary = salary;
         this.address = address;
     }
+    public void joinSql() throws IOException, ClassNotFoundException {
+        if(age<=24){
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(loc));
+            Data der = (Data) in.readObject();
+            System.out.println(der.age+der.id+ der.salary+der.address+der.name);
+            System.out.println("deserilaize done");
+            in.close();
+        }
+    }
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(loc));
-       TestSerial der = (TestSerial) in.readObject();
+       Data der = (Data) in.readObject();
+        System.out.println(der.age+der.id+ der.salary+der.address+der.name);
         System.out.println("deserilaize done");
         in.close();
     }
