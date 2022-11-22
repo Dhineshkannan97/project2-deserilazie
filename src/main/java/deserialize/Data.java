@@ -1,5 +1,4 @@
 package deserialize;
-
 import java.io.Serializable;
 import java.sql.SQLException;
     public class Data implements Serializable {
