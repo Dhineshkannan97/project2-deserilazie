@@ -19,7 +19,7 @@ public class TestSerial implements Serializable {
 
     public void insert() throws SQLException {
         this.conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/test", "postgres", "123456");
-        ResultSet rs = this.stmt.executeQuery("SELECT * FROM Google;");
+        ResultSet rs = this.stmt.executeQuery("SELECT * FROM Googlee;");
 
         while (rs.next()) {
             list.add(new Data(rs.getInt("age"), rs.getInt("id"), rs.getString("name"), rs.getFloat("salary"), rs.getString("address")));
